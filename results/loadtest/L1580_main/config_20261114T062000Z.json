@@ -1,0 +1,30 @@
+{
+ "lines": 1580,
+ "engines": "oxigraph,neo4j",
+ "mixes": "R,W,M,Whot",
+ "conc": "1,2,4,8,16,32,64",
+ "trials": 3,
+ "warmup": 5,
+ "measure": 15.0,
+ "open_fracs": "0.25,0.5,0.75,0.9,1.0,1.1",
+ "open_mixes": "R,M",
+ "phases": "closed",
+ "seed": 2026,
+ "out_dir": "results/loadtest/L1580_main",
+ "server_cpus": "0-3,8-11",
+ "client_cpus": [
+  4,
+  5,
+  6,
+  7,
+  12,
+  13,
+  14,
+  15
+ ],
+ "memory": "8g",
+ "images": [
+  "ghcr.io/oxigraph/oxigraph:0.5.13",
+  "neo4j:5.26-community"
+ ]
+}

@@ -1,0 +1,37 @@
+Neo4j: connected
+PyOxigraph lines=2 quads=1,362: loading…
+Neo4j lines=2 quads=1,362: loading…
+PyOxigraph lines=16 quads=10,065: loading…
+Neo4j lines=16 quads=10,065: loading…
+PyOxigraph lines=158 quads=100,092: loading…
+Neo4j lines=158 quads=100,092: loading…
+                                       v2 benchmark (median ms; P/R = precision/recall vs generator ground truth)                                        
+┏━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Quads   ┃ Scenario                                          ┃ Op    ┃ PyOxigraph ms ┃ Neo4j ms ┃ P / R (Oxi) ┃ P / R (Neo) ┃ Notes                    ┃
+┡━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ 1,362   │ S1 RCA (2-hop confidence ≥ 0.48)                  │ Read  │ 0.52          │ 1.73     │ 100% / 100% │ 100% / 100% │ 6 lots, avg 2.0 answers  │
+│ 1,362   │ S2 contamination (partOf+, feedsInto*)            │ Read  │ 0.20          │ 2.55     │ 100% / 100% │ 100% / 100% │ 2 seals, avg 9.5 lots    │
+│ 1,362   │ S3 per-line sensor anomalies (restriction → spec) │ Read  │ 1.88          │ 3.04     │ 100% / 100% │ 100% / 100% │ 2 lines, avg 2.0 parts   │
+│ 1,362   │ S4 query_time: TBox write                         │ Write │ 28.42         │ 3.05     │ 100% / 100% │ 100% / 100% │ 0 ABox facts touched     │
+│ 1,362   │ S4 query_time: list                               │ Read  │ 0.19          │ 1.94     │ 100% / 100% │ 100% / 100% │ COUNT: 0.11 / 1.52       │
+│ 1,362   │ S4 materialized: write + migration                │ Write │ 22.56         │ 5.82     │ 100% / 100% │ 100% / 100% │ 16 facts migrated        │
+│ 1,362   │ S4 materialized: list                             │ Read  │ 0.20          │ 1.78     │ 100% / 100% │ 100% / 100% │ COUNT: 0.06 / 1.18       │
+│ 1,362   │ S5 batch upsert (96 obs, 1 tx)                    │ Write │ 1.49          │ 5.02     │ 100% / 100% │ 100% / 100% │ S3 recount ok: True/True │
+│ 10,065  │ S1 RCA (2-hop confidence ≥ 0.48)                  │ Read  │ 0.55          │ 0.97     │ 100% / 100% │ 100% / 100% │ 8 lots, avg 2.0 answers  │
+│ 10,065  │ S2 contamination (partOf+, feedsInto*)            │ Read  │ 0.20          │ 1.47     │ 100% / 100% │ 100% / 100% │ 20 seals, avg 9.6 lots   │
+│ 10,065  │ S3 per-line sensor anomalies (restriction → spec) │ Read  │ 12.17         │ 2.19     │ 100% / 100% │ 100% / 100% │ 16 lines, avg 1.8 parts  │
+│ 10,065  │ S4 query_time: TBox write                         │ Write │ 29.39         │ 3.26     │ 100% / 100% │ 100% / 100% │ 0 ABox facts touched     │
+│ 10,065  │ S4 query_time: list                               │ Read  │ 0.71          │ 3.85     │ 100% / 100% │ 100% / 100% │ COUNT: 0.15 / 1.36       │
+│ 10,065  │ S4 materialized: write + migration                │ Write │ 27.82         │ 5.66     │ 100% / 100% │ 100% / 100% │ 128 facts migrated       │
+│ 10,065  │ S4 materialized: list                             │ Read  │ 1.22          │ 3.56     │ 100% / 100% │ 100% / 100% │ COUNT: 0.09 / 0.98       │
+│ 10,065  │ S5 batch upsert (500 obs, 1 tx)                   │ Write │ 7.86          │ 9.58     │ 100% / 100% │ 100% / 100% │ S3 recount ok: True/True │
+│ 100,092 │ S1 RCA (2-hop confidence ≥ 0.48)                  │ Read  │ 0.55          │ 0.57     │ 100% / 100% │ 100% / 100% │ 20 lots, avg 2.1 answers │
+│ 100,092 │ S2 contamination (partOf+, feedsInto*)            │ Read  │ 0.21          │ 0.79     │ 100% / 100% │ 100% / 100% │ 20 seals, avg 9.4 lots   │
+│ 100,092 │ S3 per-line sensor anomalies (restriction → spec) │ Read  │ 119.11        │ 7.64     │ 100% / 100% │ 100% / 100% │ 20 lines, avg 3.0 parts  │
+│ 100,092 │ S4 query_time: TBox write                         │ Write │ 25.27         │ 2.68     │ 100% / 100% │ 100% / 100% │ 0 ABox facts touched     │
+│ 100,092 │ S4 query_time: list                               │ Read  │ 5.73          │ 22.18    │ 100% / 100% │ 100% / 100% │ COUNT: 0.50 / 1.38       │
+│ 100,092 │ S4 materialized: write + migration                │ Write │ 33.28         │ 7.86     │ 100% / 100% │ 100% / 100% │ 1264 facts migrated      │
+│ 100,092 │ S4 materialized: list                             │ Read  │ 11.49         │ 22.12    │ 100% / 100% │ 100% / 100% │ COUNT: 0.37 / 1.08       │
+│ 100,092 │ S5 batch upsert (500 obs, 1 tx)                   │ Write │ 8.50          │ 8.01     │ 100% / 100% │ 100% / 100% │ S3 recount ok: True/True │
+└─────────┴───────────────────────────────────────────────────┴───────┴───────────────┴──────────┴─────────────┴─────────────┴──────────────────────────┘
+Saved: results/v2/run_20261114T060505Z.json, results/v2/summary_20261114T060505Z.md

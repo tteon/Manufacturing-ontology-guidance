@@ -1,0 +1,102 @@
+{
+ "lines": 1580,
+ "stats": {
+  "scale_factor(lines)": 1580,
+  "chambers": 6320,
+  "equipment": 102700,
+  "lots": 15800,
+  "processedIn": 53634,
+  "observations": 75840,
+  "symptoms": 314,
+  "symptomatic_lots": 1297,
+  "defective_seals": 2661,
+  "causes": 2512,
+  "quads_tbox": 49,
+  "quads_abox": 604514,
+  "quads_inferred": 394028,
+  "quads_total": 998591
+ },
+ "build_s": 8.27,
+ "trig_bytes": 74787753,
+ "server_cpus": "0-3,8-11",
+ "client_cpus": [
+  4,
+  5,
+  6,
+  7,
+  12,
+  13,
+  14,
+  15
+ ],
+ "memory": "8g",
+ "images": {
+  "oxigraph": "ghcr.io/oxigraph/oxigraph:0.5.13",
+  "neo4j": "neo4j:5.26-community"
+ },
+ "oxigraph_load": {
+  "load_s": 4.93
+ },
+ "neo4j_load": {
+  "load_ms": 26719.475402,
+  "nodes": 197839,
+  "relationships": 518671
+ },
+ "validation": {
+  "S1": {
+   "n": 200,
+   "wrong": {
+    "oxigraph": 0,
+    "neo4j": 0
+   },
+   "serial_mean_ms": {
+    "oxigraph": 1.66,
+    "neo4j": 3.27
+   }
+  },
+  "S2": {
+   "n": 200,
+   "wrong": {
+    "oxigraph": 0,
+    "neo4j": 0
+   },
+   "serial_mean_ms": {
+    "oxigraph": 1.1,
+    "neo4j": 3.39
+   }
+  },
+  "S3": {
+   "n": 200,
+   "wrong": {
+    "oxigraph": 0,
+    "neo4j": 0
+   },
+   "serial_mean_ms": {
+    "oxigraph": 1432.87,
+    "neo4j": 74.87
+   }
+  },
+  "Cq": {
+   "n": 11,
+   "wrong": {
+    "oxigraph": 0,
+    "neo4j": 0
+   },
+   "serial_mean_ms": {
+    "oxigraph": 9.75,
+    "neo4j": 13.68
+   }
+  },
+  "Cm": {
+   "n": 11,
+   "wrong": {
+    "oxigraph": 0,
+    "neo4j": 0
+   },
+   "serial_mean_ms": {
+    "oxigraph": 7.57,
+    "neo4j": 10.92
+   }
+  }
+ }
+}

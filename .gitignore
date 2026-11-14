@@ -4,3 +4,5 @@ __pycache__/
 .env
 results/.mara.lock
 results/.mara.pending
+loadtest/work/
+results/llm_state/
