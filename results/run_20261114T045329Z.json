@@ -1,0 +1,1772 @@
+{
+  "timestamp_utc": "20261114T045329Z",
+  "scales": [
+    0,
+    1000,
+    10000,
+    100000
+  ],
+  "settings": {
+    "scales": "0,1000,10000,100000",
+    "reps": 5,
+    "read_reps": 20,
+    "warmup": 3,
+    "no_llm": false,
+    "model": "gpt-oss-120b",
+    "no_neo4j": false,
+    "neo4j_uri": "bolt://127.0.0.1:7687",
+    "neo4j_user": "neo4j",
+    "neo4j_password": "***",
+    "neo4j_container": "mfg-bench-neo4j"
+  },
+  "versions": {
+    "python": "3.14.2",
+    "pyoxigraph": "0.5.13",
+    "neo4j_driver": "6.4.1",
+    "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35"
+  },
+  "router": "MARA gpt-oss-120b (healthy)",
+  "routing": {
+    "S1": {
+      "query": "Lot_101에서 Thickness_Anomaly 증상이 나왔어. 3단계 인과 체인의 누적 신뢰도가 0.70 이상인 근본 원인과 책임 설비를 찾아줘.",
+      "source": "llm",
+      "rule_intent": {
+        "scenario_type": "rca_probabilistic",
+        "target_entity_id": "Lot_101",
+        "symptom_or_defect_id": "Thickness_Anomaly",
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      },
+      "llm_intent": {
+        "scenario_type": "rca_probabilistic",
+        "target_entity_id": "Lot_101",
+        "symptom_or_defect_id": "Thickness_Anomaly",
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      },
+      "agrees_with_rules": true,
+      "executed_intent": {
+        "scenario_type": "rca_probabilistic",
+        "target_entity_id": "Lot_101",
+        "symptom_or_defect_id": "Thickness_Anomaly",
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      }
+    },
+    "S2": {
+      "query": "ORing_Seal_04 부품에서 Micro_Leak 결함이 발견됐어. partOf와 feedsInto를 따라 오염이 전파됐을 수 있는 챔버와 오염 의심 로트를 추적해줘.",
+      "source": "llm",
+      "rule_intent": {
+        "scenario_type": "impact_propagation",
+        "target_entity_id": "ORing_Seal_04",
+        "symptom_or_defect_id": "Micro_Leak",
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      },
+      "llm_intent": {
+        "scenario_type": "impact_propagation",
+        "target_entity_id": "ORing_Seal_04",
+        "symptom_or_defect_id": "Micro_Leak",
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      },
+      "agrees_with_rules": true,
+      "executed_intent": {
+        "scenario_type": "impact_propagation",
+        "target_entity_id": "ORing_Seal_04",
+        "symptom_or_defect_id": "Micro_Leak",
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      }
+    },
+    "S3": {
+      "query": "센서 관측값(hasSimpleResult)이 설비 클래스의 maxAllowedDrift를 초과한 고위험 설비와 그 상위 카테고리를 분류해줘.",
+      "source": "llm",
+      "rule_intent": {
+        "scenario_type": "sensor_classification",
+        "target_entity_id": null,
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      },
+      "llm_intent": {
+        "scenario_type": "sensor_classification",
+        "target_entity_id": null,
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      },
+      "agrees_with_rules": true,
+      "executed_intent": {
+        "scenario_type": "sensor_classification",
+        "target_entity_id": null,
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      }
+    },
+    "S4": {
+      "query": "새로운 환경 안전 규정에 따라 GasSupplyModule과 PlasmaModule을 모두 CriticalHazardSystem이라는 새로운 상위 클래스로 묶고, 이 클래스에 속한 모든 설비는 즉시 비상 인터록 점검(Emergency_Interlock_Check) 대상이 된다고 스키마(TBox)를 업데이트해 줘. 그리고 현재 이 규정에 해당하는 현장 설비 목록을 바로 뽑아줘.",
+      "source": "llm",
+      "rule_intent": {
+        "scenario_type": "tbox_schema_evolution",
+        "target_entity_id": null,
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": "CriticalHazardSystem",
+        "target_subclasses": [
+          "GasSupplyModule",
+          "PlasmaModule"
+        ],
+        "mutation_iterations": 100
+      },
+      "llm_intent": {
+        "scenario_type": "tbox_schema_evolution",
+        "target_entity_id": null,
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": "CriticalHazardSystem",
+        "target_subclasses": [
+          "GasSupplyModule",
+          "PlasmaModule"
+        ],
+        "mutation_iterations": 100
+      },
+      "agrees_with_rules": true,
+      "executed_intent": {
+        "scenario_type": "tbox_schema_evolution",
+        "target_entity_id": null,
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": "CriticalHazardSystem",
+        "target_subclasses": [
+          "GasSupplyModule",
+          "PlasmaModule"
+        ],
+        "mutation_iterations": 100
+      }
+    },
+    "S5": {
+      "query": "MFC_01 설비의 실시간 센서 편차값이 스트리밍으로 100번 연속 업데이트되는 상황을 시뮬레이션하고, 최종 상태값이 임계치(5.0)를 넘었는지 판별해 줘.",
+      "source": "llm",
+      "rule_intent": {
+        "scenario_type": "abox_mutation_stress",
+        "target_entity_id": "MFC_01",
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      },
+      "llm_intent": {
+        "scenario_type": "abox_mutation_stress",
+        "target_entity_id": "MFC_01",
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      },
+      "agrees_with_rules": true,
+      "executed_intent": {
+        "scenario_type": "abox_mutation_stress",
+        "target_entity_id": "MFC_01",
+        "symptom_or_defect_id": null,
+        "min_confidence": 0.7,
+        "new_parent_class": null,
+        "target_subclasses": null,
+        "mutation_iterations": 100
+      }
+    }
+  },
+  "engines": {
+    "PyOxigraph": {
+      "scales": {
+        "0": {
+          "load": {
+            "load_trig_ms": 0.522558,
+            "materialize_ms": 0.286638,
+            "flush_ms": 19.277052
+          },
+          "reads": {
+            "noop": {
+              "n": 20,
+              "median_ms": 0.0145,
+              "p95_ms": 0.0192,
+              "min_ms": 0.0143,
+              "max_ms": 0.02
+            },
+            "S1": {
+              "result": [
+                [
+                  "GasFlow_Instability",
+                  "MFC_01",
+                  0.7268
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.2586,
+                "p95_ms": 0.2924,
+                "min_ms": 0.2525,
+                "max_ms": 0.3193
+              },
+              "correct": true
+            },
+            "S2": {
+              "result": [
+                [
+                  "Chamber_CVD_01",
+                  "Lot_101"
+                ],
+                [
+                  "Chamber_Etch_02",
+                  "Lot_102"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.1653,
+                "p95_ms": 0.1944,
+                "min_ms": 0.1621,
+                "max_ms": 0.1991
+              },
+              "correct": true
+            },
+            "S3": {
+              "result": [
+                [
+                  "MFC_01",
+                  6.2,
+                  5.0,
+                  "GasSupplyModule"
+                ],
+                [
+                  "RF_Gen_01",
+                  3.8,
+                  3.0,
+                  "PlasmaModule"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.3243,
+                "p95_ms": 0.4022,
+                "min_ms": 0.3174,
+                "max_ms": 0.4629
+              },
+              "correct": true
+            }
+          },
+          "S4": {
+            "query_time": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 27.8894,
+                "p95_ms": 30.6077,
+                "min_ms": 25.6688,
+                "max_ms": 30.6077
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 0.0272,
+                "p95_ms": 0.0332,
+                "min_ms": 0.0261,
+                "max_ms": 0.0332
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 27.8615,
+                "p95_ms": 30.5816,
+                "min_ms": 25.6416,
+                "max_ms": 30.5816
+              },
+              "abox_facts_written": 0,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 0.1798,
+                "p95_ms": 0.2475,
+                "min_ms": 0.1697,
+                "max_ms": 0.2475
+              },
+              "read_median_of_medians_ms": 0.1148,
+              "rows": 3,
+              "expected_rows": 3,
+              "correct": true
+            },
+            "materialized": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 25.7703,
+                "p95_ms": 30.9712,
+                "min_ms": 23.803,
+                "max_ms": 30.9712
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 0.0275,
+                "p95_ms": 0.0368,
+                "min_ms": 0.0266,
+                "max_ms": 0.0368
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.163,
+                "p95_ms": 0.2131,
+                "min_ms": 0.1351,
+                "max_ms": 0.2131
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 25.6076,
+                "p95_ms": 30.8095,
+                "min_ms": 23.5532,
+                "max_ms": 30.8095
+              },
+              "abox_facts_written": 3,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 0.1491,
+                "p95_ms": 0.1829,
+                "min_ms": 0.1334,
+                "max_ms": 0.1829
+              },
+              "read_median_of_medians_ms": 0.0764,
+              "rows": 3,
+              "expected_rows": 3,
+              "correct": true
+            }
+          },
+          "S5": {
+            "observation": "Obs_01",
+            "iterations": 100,
+            "total": {
+              "n": 5,
+              "median_ms": 9.2033,
+              "p95_ms": 16.9518,
+              "min_ms": 6.8755,
+              "max_ms": 16.9518
+            },
+            "per_update_median_ms": 0.092,
+            "noop_roundtrip_total": {
+              "n": 5,
+              "median_ms": 1.3529,
+              "p95_ms": 1.3637,
+              "min_ms": 1.3465,
+              "max_ms": 1.3637
+            },
+            "per_noop_median_ms": 0.0135,
+            "final_flush_ms": 32.474,
+            "disk_bytes_before": 321343,
+            "disk_bytes_after_updates": 801823,
+            "disk_bytes_after_flush": 793642,
+            "final_values": [
+              [
+                6.97,
+                5.0
+              ]
+            ],
+            "exceeds_threshold": true,
+            "correct": true
+          }
+        },
+        "1000": {
+          "load": {
+            "load_trig_ms": 0.416085,
+            "load_synthetic_ms": 5.787716,
+            "materialize_ms": 16.809793,
+            "flush_ms": 26.956757
+          },
+          "reads": {
+            "noop": {
+              "n": 20,
+              "median_ms": 0.0233,
+              "p95_ms": 0.0263,
+              "min_ms": 0.0222,
+              "max_ms": 0.0356
+            },
+            "S1": {
+              "result": [
+                [
+                  "GasFlow_Instability",
+                  "MFC_01",
+                  0.7268
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.2761,
+                "p95_ms": 0.3086,
+                "min_ms": 0.2708,
+                "max_ms": 0.4439
+              },
+              "correct": true
+            },
+            "S2": {
+              "result": [
+                [
+                  "Chamber_CVD_01",
+                  "Lot_101"
+                ],
+                [
+                  "Chamber_Etch_02",
+                  "Lot_102"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.1782,
+                "p95_ms": 0.2709,
+                "min_ms": 0.1724,
+                "max_ms": 0.2935
+              },
+              "correct": true
+            },
+            "S3": {
+              "result": [
+                [
+                  "MFC_01",
+                  6.2,
+                  5.0,
+                  "GasSupplyModule"
+                ],
+                [
+                  "RF_Gen_01",
+                  3.8,
+                  3.0,
+                  "PlasmaModule"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 3.5218,
+                "p95_ms": 3.6051,
+                "min_ms": 3.4994,
+                "max_ms": 3.6494
+              },
+              "correct": true
+            }
+          },
+          "S4": {
+            "query_time": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 27.7287,
+                "p95_ms": 30.829,
+                "min_ms": 24.6202,
+                "max_ms": 30.829
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 0.0358,
+                "p95_ms": 0.0468,
+                "min_ms": 0.0279,
+                "max_ms": 0.0468
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 27.6819,
+                "p95_ms": 30.7987,
+                "min_ms": 24.5844,
+                "max_ms": 30.7987
+              },
+              "abox_facts_written": 0,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 1.5846,
+                "p95_ms": 1.6774,
+                "min_ms": 1.5466,
+                "max_ms": 1.6774
+              },
+              "read_median_of_medians_ms": 1.4185,
+              "rows": 378,
+              "expected_rows": 378,
+              "correct": true
+            },
+            "materialized": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 30.7261,
+                "p95_ms": 31.7148,
+                "min_ms": 27.1038,
+                "max_ms": 31.7148
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 0.0354,
+                "p95_ms": 0.0367,
+                "min_ms": 0.0294,
+                "max_ms": 0.0367
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 2.7419,
+                "p95_ms": 4.2358,
+                "min_ms": 2.6645,
+                "max_ms": 4.2358
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 26.5289,
+                "p95_ms": 28.9841,
+                "min_ms": 24.3251,
+                "max_ms": 28.9841
+              },
+              "abox_facts_written": 378,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 3.1259,
+                "p95_ms": 4.167,
+                "min_ms": 2.8221,
+                "max_ms": 4.167
+              },
+              "read_median_of_medians_ms": 2.5669,
+              "rows": 378,
+              "expected_rows": 378,
+              "correct": true
+            }
+          },
+          "S5": {
+            "observation": "Obs_01",
+            "iterations": 100,
+            "total": {
+              "n": 5,
+              "median_ms": 9.0611,
+              "p95_ms": 17.3485,
+              "min_ms": 6.6541,
+              "max_ms": 17.3485
+            },
+            "per_update_median_ms": 0.0906,
+            "noop_roundtrip_total": {
+              "n": 5,
+              "median_ms": 1.3286,
+              "p95_ms": 1.5321,
+              "min_ms": 1.319,
+              "max_ms": 1.5321
+            },
+            "per_noop_median_ms": 0.0133,
+            "final_flush_ms": 29.114,
+            "disk_bytes_before": 1909983,
+            "disk_bytes_after_updates": 2130125,
+            "disk_bytes_after_flush": 2058983,
+            "final_values": [
+              [
+                6.97,
+                5.0
+              ]
+            ],
+            "exceeds_threshold": true,
+            "correct": true
+          }
+        },
+        "10000": {
+          "load": {
+            "load_trig_ms": 0.457006,
+            "load_synthetic_ms": 75.51516,
+            "materialize_ms": 208.093959,
+            "flush_ms": 90.059269
+          },
+          "reads": {
+            "noop": {
+              "n": 20,
+              "median_ms": 0.0148,
+              "p95_ms": 0.0222,
+              "min_ms": 0.0145,
+              "max_ms": 0.1186
+            },
+            "S1": {
+              "result": [
+                [
+                  "GasFlow_Instability",
+                  "MFC_01",
+                  0.7268
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.3802,
+                "p95_ms": 0.5825,
+                "min_ms": 0.2906,
+                "max_ms": 0.5899
+              },
+              "correct": true
+            },
+            "S2": {
+              "result": [
+                [
+                  "Chamber_CVD_01",
+                  "Lot_101"
+                ],
+                [
+                  "Chamber_Etch_02",
+                  "Lot_102"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.1761,
+                "p95_ms": 0.1996,
+                "min_ms": 0.1719,
+                "max_ms": 0.1996
+              },
+              "correct": true
+            },
+            "S3": {
+              "result": [
+                [
+                  "MFC_01",
+                  6.2,
+                  5.0,
+                  "GasSupplyModule"
+                ],
+                [
+                  "RF_Gen_01",
+                  3.8,
+                  3.0,
+                  "PlasmaModule"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 34.0031,
+                "p95_ms": 35.3806,
+                "min_ms": 33.4317,
+                "max_ms": 38.0647
+              },
+              "correct": true
+            }
+          },
+          "S4": {
+            "query_time": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 25.328,
+                "p95_ms": 30.3099,
+                "min_ms": 21.8757,
+                "max_ms": 30.3099
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 0.0407,
+                "p95_ms": 0.0539,
+                "min_ms": 0.0312,
+                "max_ms": 0.0539
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 25.2741,
+                "p95_ms": 30.2787,
+                "min_ms": 21.8395,
+                "max_ms": 30.2787
+              },
+              "abox_facts_written": 0,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 14.3408,
+                "p95_ms": 15.0125,
+                "min_ms": 13.8202,
+                "max_ms": 15.0125
+              },
+              "read_median_of_medians_ms": 13.4133,
+              "rows": 3753,
+              "expected_rows": 3753,
+              "correct": true
+            },
+            "materialized": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 58.8553,
+                "p95_ms": 95.0569,
+                "min_ms": 54.9788,
+                "max_ms": 95.0569
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 0.0408,
+                "p95_ms": 0.0908,
+                "min_ms": 0.0382,
+                "max_ms": 0.0908
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 27.4399,
+                "p95_ms": 28.8611,
+                "min_ms": 27.198,
+                "max_ms": 28.8611
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 31.3507,
+                "p95_ms": 67.8196,
+                "min_ms": 27.6816,
+                "max_ms": 67.8196
+              },
+              "abox_facts_written": 3753,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 33.2136,
+                "p95_ms": 36.0993,
+                "min_ms": 30.9426,
+                "max_ms": 36.0993
+              },
+              "read_median_of_medians_ms": 26.211,
+              "rows": 3753,
+              "expected_rows": 3753,
+              "correct": true
+            }
+          },
+          "S5": {
+            "observation": "Obs_01",
+            "iterations": 100,
+            "total": {
+              "n": 5,
+              "median_ms": 9.1782,
+              "p95_ms": 18.3293,
+              "min_ms": 6.9519,
+              "max_ms": 18.3293
+            },
+            "per_update_median_ms": 0.0918,
+            "noop_roundtrip_total": {
+              "n": 5,
+              "median_ms": 1.3632,
+              "p95_ms": 1.3687,
+              "min_ms": 1.3585,
+              "max_ms": 1.3687
+            },
+            "per_noop_median_ms": 0.0136,
+            "final_flush_ms": 22.559,
+            "disk_bytes_before": 15828424,
+            "disk_bytes_after_updates": 15828424,
+            "disk_bytes_after_flush": 13272255,
+            "final_values": [
+              [
+                6.97,
+                5.0
+              ]
+            ],
+            "exceeds_threshold": true,
+            "correct": true
+          }
+        },
+        "100000": {
+          "load": {
+            "load_trig_ms": 0.39232,
+            "load_synthetic_ms": 1038.796914,
+            "materialize_ms": 2291.692038,
+            "flush_ms": 604.656116
+          },
+          "reads": {
+            "noop": {
+              "n": 20,
+              "median_ms": 0.0149,
+              "p95_ms": 0.0159,
+              "min_ms": 0.0148,
+              "max_ms": 0.0187
+            },
+            "S1": {
+              "result": [
+                [
+                  "GasFlow_Instability",
+                  "MFC_01",
+                  0.7268
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.2763,
+                "p95_ms": 0.2914,
+                "min_ms": 0.2717,
+                "max_ms": 0.2944
+              },
+              "correct": true
+            },
+            "S2": {
+              "result": [
+                [
+                  "Chamber_CVD_01",
+                  "Lot_101"
+                ],
+                [
+                  "Chamber_Etch_02",
+                  "Lot_102"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.1751,
+                "p95_ms": 0.1803,
+                "min_ms": 0.1732,
+                "max_ms": 0.1805
+              },
+              "correct": true
+            },
+            "S3": {
+              "result": [
+                [
+                  "MFC_01",
+                  6.2,
+                  5.0,
+                  "GasSupplyModule"
+                ],
+                [
+                  "RF_Gen_01",
+                  3.8,
+                  3.0,
+                  "PlasmaModule"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 330.2231,
+                "p95_ms": 334.8905,
+                "min_ms": 328.478,
+                "max_ms": 335.1065
+              },
+              "correct": true
+            }
+          },
+          "S4": {
+            "query_time": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 24.7341,
+                "p95_ms": 27.0979,
+                "min_ms": 24.2941,
+                "max_ms": 27.0979
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 0.0493,
+                "p95_ms": 0.0569,
+                "min_ms": 0.0449,
+                "max_ms": 0.0569
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 24.6797,
+                "p95_ms": 27.0409,
+                "min_ms": 24.2448,
+                "max_ms": 27.0409
+              },
+              "abox_facts_written": 0,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 130.6044,
+                "p95_ms": 145.7602,
+                "min_ms": 129.7439,
+                "max_ms": 145.7602
+              },
+              "read_median_of_medians_ms": 129.0246,
+              "rows": 37503,
+              "expected_rows": 37503,
+              "correct": true
+            },
+            "materialized": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 386.8116,
+                "p95_ms": 393.177,
+                "min_ms": 378.9051,
+                "max_ms": 393.177
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 0.1168,
+                "p95_ms": 0.3159,
+                "min_ms": 0.0572,
+                "max_ms": 0.3159
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 287.5203,
+                "p95_ms": 290.6616,
+                "min_ms": 281.2544,
+                "max_ms": 290.6616
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 99.2786,
+                "p95_ms": 102.856,
+                "min_ms": 95.0548,
+                "max_ms": 102.856
+              },
+              "abox_facts_written": 37503,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 330.5435,
+                "p95_ms": 335.6764,
+                "min_ms": 312.5973,
+                "max_ms": 335.6764
+              },
+              "read_median_of_medians_ms": 261.9306,
+              "rows": 37503,
+              "expected_rows": 37503,
+              "correct": true
+            }
+          },
+          "S5": {
+            "observation": "Obs_01",
+            "iterations": 100,
+            "total": {
+              "n": 5,
+              "median_ms": 9.6255,
+              "p95_ms": 17.8558,
+              "min_ms": 7.1471,
+              "max_ms": 17.8558
+            },
+            "per_update_median_ms": 0.0963,
+            "noop_roundtrip_total": {
+              "n": 5,
+              "median_ms": 1.5083,
+              "p95_ms": 1.5462,
+              "min_ms": 1.5066,
+              "max_ms": 1.5462
+            },
+            "per_noop_median_ms": 0.0151,
+            "final_flush_ms": 26.907,
+            "disk_bytes_before": 154726144,
+            "disk_bytes_after_updates": 154726144,
+            "disk_bytes_after_flush": 130789332,
+            "final_values": [
+              [
+                6.97,
+                5.0
+              ]
+            ],
+            "exceeds_threshold": true,
+            "correct": true
+          }
+        }
+      }
+    },
+    "Neo4j": {
+      "scales": {
+        "0": {
+          "load": {
+            "load_base_ms": 382.388565,
+            "wipe_ms": 56.938536
+          },
+          "reads": {
+            "noop": {
+              "n": 20,
+              "median_ms": 0.4768,
+              "p95_ms": 0.6589,
+              "min_ms": 0.4084,
+              "max_ms": 0.7594
+            },
+            "S1": {
+              "result": [
+                [
+                  "GasFlow_Instability",
+                  "MFC_01",
+                  0.7268
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 1.081,
+                "p95_ms": 1.5964,
+                "min_ms": 0.7824,
+                "max_ms": 1.6651
+              },
+              "correct": true
+            },
+            "S2": {
+              "result": [
+                [
+                  "Chamber_CVD_01",
+                  "Lot_101"
+                ],
+                [
+                  "Chamber_Etch_02",
+                  "Lot_102"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 1.2689,
+                "p95_ms": 1.786,
+                "min_ms": 0.887,
+                "max_ms": 1.8478
+              },
+              "correct": true
+            },
+            "S3": {
+              "result": [
+                [
+                  "MFC_01",
+                  6.2,
+                  5.0,
+                  "GasSupplyModule"
+                ],
+                [
+                  "RF_Gen_01",
+                  3.8,
+                  3.0,
+                  "PlasmaModule"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 1.2008,
+                "p95_ms": 1.6681,
+                "min_ms": 0.9374,
+                "max_ms": 1.7075
+              },
+              "correct": true
+            }
+          },
+          "S4": {
+            "query_time": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 2.7879,
+                "p95_ms": 29.2374,
+                "min_ms": 2.1555,
+                "max_ms": 29.2374
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 2.7879,
+                "p95_ms": 29.2374,
+                "min_ms": 2.1555,
+                "max_ms": 29.2374
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "abox_facts_written": 0,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 1.2694,
+                "p95_ms": 18.7936,
+                "min_ms": 1.0455,
+                "max_ms": 18.7936
+              },
+              "read_median_of_medians_ms": 0.8967,
+              "rows": 3,
+              "expected_rows": 3,
+              "correct": true
+            },
+            "materialized": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 4.8314,
+                "p95_ms": 20.0277,
+                "min_ms": 4.3449,
+                "max_ms": 20.0277
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 2.505,
+                "p95_ms": 3.2962,
+                "min_ms": 2.1003,
+                "max_ms": 3.2962
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 1.9089,
+                "p95_ms": 17.9274,
+                "min_ms": 1.8504,
+                "max_ms": 17.9274
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "abox_facts_written": 3,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 1.3337,
+                "p95_ms": 15.1308,
+                "min_ms": 1.2723,
+                "max_ms": 15.1308
+              },
+              "read_median_of_medians_ms": 0.8953,
+              "rows": 3,
+              "expected_rows": 3,
+              "correct": true
+            }
+          },
+          "S5": {
+            "observation": "Obs_01",
+            "iterations": 100,
+            "total": {
+              "n": 5,
+              "median_ms": 118.1702,
+              "p95_ms": 139.808,
+              "min_ms": 101.4093,
+              "max_ms": 139.808
+            },
+            "per_update_median_ms": 1.1817,
+            "noop_roundtrip_total": {
+              "n": 5,
+              "median_ms": 49.1411,
+              "p95_ms": 82.4079,
+              "min_ms": 38.8086,
+              "max_ms": 82.4079
+            },
+            "per_noop_median_ms": 0.4914,
+            "final_flush_ms": 0.001,
+            "disk_bytes_before": 270420430,
+            "disk_bytes_after_updates": 270420603,
+            "disk_bytes_after_flush": 270420603,
+            "final_values": [
+              [
+                6.97,
+                5.0
+              ]
+            ],
+            "exceeds_threshold": true,
+            "correct": true
+          }
+        },
+        "1000": {
+          "load": {
+            "load_base_ms": 40.511323,
+            "load_synthetic_ms": 157.728078,
+            "wipe_ms": 4.777503
+          },
+          "reads": {
+            "noop": {
+              "n": 20,
+              "median_ms": 0.479,
+              "p95_ms": 0.5986,
+              "min_ms": 0.4134,
+              "max_ms": 0.6457
+            },
+            "S1": {
+              "result": [
+                [
+                  "GasFlow_Instability",
+                  "MFC_01",
+                  0.7268
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 1.006,
+                "p95_ms": 1.249,
+                "min_ms": 0.616,
+                "max_ms": 1.3058
+              },
+              "correct": true
+            },
+            "S2": {
+              "result": [
+                [
+                  "Chamber_CVD_01",
+                  "Lot_101"
+                ],
+                [
+                  "Chamber_Etch_02",
+                  "Lot_102"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.7761,
+                "p95_ms": 1.0839,
+                "min_ms": 0.5904,
+                "max_ms": 1.1054
+              },
+              "correct": true
+            },
+            "S3": {
+              "result": [
+                [
+                  "MFC_01",
+                  6.2,
+                  5.0,
+                  "GasSupplyModule"
+                ],
+                [
+                  "RF_Gen_01",
+                  3.8,
+                  3.0,
+                  "PlasmaModule"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 1.1602,
+                "p95_ms": 1.3188,
+                "min_ms": 0.9259,
+                "max_ms": 1.4691
+              },
+              "correct": true
+            }
+          },
+          "S4": {
+            "query_time": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 2.3742,
+                "p95_ms": 8.0738,
+                "min_ms": 2.1087,
+                "max_ms": 8.0738
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 2.3742,
+                "p95_ms": 8.0738,
+                "min_ms": 2.1087,
+                "max_ms": 8.0738
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "abox_facts_written": 0,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 7.3317,
+                "p95_ms": 14.3632,
+                "min_ms": 7.1721,
+                "max_ms": 14.3632
+              },
+              "read_median_of_medians_ms": 7.087,
+              "rows": 378,
+              "expected_rows": 378,
+              "correct": true
+            },
+            "materialized": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 6.2519,
+                "p95_ms": 7.2412,
+                "min_ms": 5.6374,
+                "max_ms": 7.2412
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 2.4039,
+                "p95_ms": 2.7513,
+                "min_ms": 2.3549,
+                "max_ms": 2.7513
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 3.8208,
+                "p95_ms": 4.4899,
+                "min_ms": 3.2823,
+                "max_ms": 4.4899
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "abox_facts_written": 378,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 7.5415,
+                "p95_ms": 13.4681,
+                "min_ms": 7.3756,
+                "max_ms": 13.4681
+              },
+              "read_median_of_medians_ms": 7.5075,
+              "rows": 378,
+              "expected_rows": 378,
+              "correct": true
+            }
+          },
+          "S5": {
+            "observation": "Obs_01",
+            "iterations": 100,
+            "total": {
+              "n": 5,
+              "median_ms": 93.4078,
+              "p95_ms": 107.9884,
+              "min_ms": 90.8941,
+              "max_ms": 107.9884
+            },
+            "per_update_median_ms": 0.9341,
+            "noop_roundtrip_total": {
+              "n": 5,
+              "median_ms": 46.2078,
+              "p95_ms": 68.8903,
+              "min_ms": 36.2131,
+              "max_ms": 68.8903
+            },
+            "per_noop_median_ms": 0.4621,
+            "final_flush_ms": 0.002,
+            "disk_bytes_before": 270422204,
+            "disk_bytes_after_updates": 270422337,
+            "disk_bytes_after_flush": 270422337,
+            "final_values": [
+              [
+                6.97,
+                5.0
+              ]
+            ],
+            "exceeds_threshold": true,
+            "correct": true
+          }
+        },
+        "10000": {
+          "load": {
+            "load_base_ms": 52.400352,
+            "load_synthetic_ms": 454.297763,
+            "wipe_ms": 26.103704
+          },
+          "reads": {
+            "noop": {
+              "n": 20,
+              "median_ms": 0.9318,
+              "p95_ms": 1.1296,
+              "min_ms": 0.4282,
+              "max_ms": 1.2803
+            },
+            "S1": {
+              "result": [
+                [
+                  "GasFlow_Instability",
+                  "MFC_01",
+                  0.7268
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.6643,
+                "p95_ms": 1.0523,
+                "min_ms": 0.4734,
+                "max_ms": 1.1466
+              },
+              "correct": true
+            },
+            "S2": {
+              "result": [
+                [
+                  "Chamber_CVD_01",
+                  "Lot_101"
+                ],
+                [
+                  "Chamber_Etch_02",
+                  "Lot_102"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.5324,
+                "p95_ms": 0.7863,
+                "min_ms": 0.4533,
+                "max_ms": 0.8414
+              },
+              "correct": true
+            },
+            "S3": {
+              "result": [
+                [
+                  "MFC_01",
+                  6.2,
+                  5.0,
+                  "GasSupplyModule"
+                ],
+                [
+                  "RF_Gen_01",
+                  3.8,
+                  3.0,
+                  "PlasmaModule"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 3.2159,
+                "p95_ms": 3.3953,
+                "min_ms": 3.0403,
+                "max_ms": 3.8344
+              },
+              "correct": true
+            }
+          },
+          "S4": {
+            "query_time": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 2.4275,
+                "p95_ms": 24.877,
+                "min_ms": 1.7448,
+                "max_ms": 24.877
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 2.4275,
+                "p95_ms": 24.877,
+                "min_ms": 1.7448,
+                "max_ms": 24.877
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "abox_facts_written": 0,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 62.0312,
+                "p95_ms": 89.7412,
+                "min_ms": 59.2303,
+                "max_ms": 89.7412
+              },
+              "read_median_of_medians_ms": 60.6617,
+              "rows": 3753,
+              "expected_rows": 3753,
+              "correct": true
+            },
+            "materialized": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 17.1063,
+                "p95_ms": 33.5291,
+                "min_ms": 10.2684,
+                "max_ms": 33.5291
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 2.473,
+                "p95_ms": 22.8961,
+                "min_ms": 1.8357,
+                "max_ms": 22.8961
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 10.633,
+                "p95_ms": 26.5164,
+                "min_ms": 8.3428,
+                "max_ms": 26.5164
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "abox_facts_written": 3753,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 68.9281,
+                "p95_ms": 74.8592,
+                "min_ms": 60.5277,
+                "max_ms": 74.8592
+              },
+              "read_median_of_medians_ms": 60.0483,
+              "rows": 3753,
+              "expected_rows": 3753,
+              "correct": true
+            }
+          },
+          "S5": {
+            "observation": "Obs_01",
+            "iterations": 100,
+            "total": {
+              "n": 5,
+              "median_ms": 93.1391,
+              "p95_ms": 99.0665,
+              "min_ms": 81.1448,
+              "max_ms": 99.0665
+            },
+            "per_update_median_ms": 0.9314,
+            "noop_roundtrip_total": {
+              "n": 5,
+              "median_ms": 40.6609,
+              "p95_ms": 42.7047,
+              "min_ms": 34.0944,
+              "max_ms": 42.7047
+            },
+            "per_noop_median_ms": 0.4066,
+            "final_flush_ms": 0.001,
+            "disk_bytes_before": 270448379,
+            "disk_bytes_after_updates": 270448472,
+            "disk_bytes_after_flush": 270448472,
+            "final_values": [
+              [
+                6.97,
+                5.0
+              ]
+            ],
+            "exceeds_threshold": true,
+            "correct": true
+          }
+        },
+        "100000": {
+          "load": {
+            "load_base_ms": 419.122637,
+            "load_synthetic_ms": 1280.740996,
+            "wipe_ms": 197.827972
+          },
+          "reads": {
+            "noop": {
+              "n": 20,
+              "median_ms": 0.4301,
+              "p95_ms": 0.5722,
+              "min_ms": 0.3456,
+              "max_ms": 0.6087
+            },
+            "S1": {
+              "result": [
+                [
+                  "GasFlow_Instability",
+                  "MFC_01",
+                  0.7268
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.5721,
+                "p95_ms": 0.7413,
+                "min_ms": 0.4879,
+                "max_ms": 0.8699
+              },
+              "correct": true
+            },
+            "S2": {
+              "result": [
+                [
+                  "Chamber_CVD_01",
+                  "Lot_101"
+                ],
+                [
+                  "Chamber_Etch_02",
+                  "Lot_102"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 0.7649,
+                "p95_ms": 0.9065,
+                "min_ms": 0.5259,
+                "max_ms": 0.9135
+              },
+              "correct": true
+            },
+            "S3": {
+              "result": [
+                [
+                  "MFC_01",
+                  6.2,
+                  5.0,
+                  "GasSupplyModule"
+                ],
+                [
+                  "RF_Gen_01",
+                  3.8,
+                  3.0,
+                  "PlasmaModule"
+                ]
+              ],
+              "latency": {
+                "n": 20,
+                "median_ms": 25.0978,
+                "p95_ms": 27.2948,
+                "min_ms": 24.4041,
+                "max_ms": 27.3206
+              },
+              "correct": true
+            }
+          },
+          "S4": {
+            "query_time": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 2.266,
+                "p95_ms": 22.4992,
+                "min_ms": 2.0132,
+                "max_ms": 22.4992
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 2.266,
+                "p95_ms": 22.4992,
+                "min_ms": 2.0132,
+                "max_ms": 22.4992
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "abox_facts_written": 0,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 609.1915,
+                "p95_ms": 626.8356,
+                "min_ms": 583.6512,
+                "max_ms": 626.8356
+              },
+              "read_median_of_medians_ms": 600.7774,
+              "rows": 37503,
+              "expected_rows": 37503,
+              "correct": true
+            },
+            "materialized": {
+              "write_total": {
+                "n": 5,
+                "median_ms": 73.7564,
+                "p95_ms": 94.1111,
+                "min_ms": 73.2634,
+                "max_ms": 94.1111
+              },
+              "tbox_write": {
+                "n": 5,
+                "median_ms": 2.44,
+                "p95_ms": 2.6207,
+                "min_ms": 2.2225,
+                "max_ms": 2.6207
+              },
+              "abox_migration": {
+                "n": 5,
+                "median_ms": 71.5171,
+                "p95_ms": 91.516,
+                "min_ms": 70.6427,
+                "max_ms": 91.516
+              },
+              "flush": {
+                "n": 5,
+                "median_ms": 0.0,
+                "p95_ms": 0.0,
+                "min_ms": 0.0,
+                "max_ms": 0.0
+              },
+              "abox_facts_written": 37503,
+              "first_read_after_write": {
+                "n": 5,
+                "median_ms": 603.9639,
+                "p95_ms": 611.3226,
+                "min_ms": 596.0117,
+                "max_ms": 611.3226
+              },
+              "read_median_of_medians_ms": 598.6649,
+              "rows": 37503,
+              "expected_rows": 37503,
+              "correct": true
+            }
+          },
+          "S5": {
+            "observation": "Obs_01",
+            "iterations": 100,
+            "total": {
+              "n": 5,
+              "median_ms": 80.0565,
+              "p95_ms": 87.637,
+              "min_ms": 76.5256,
+              "max_ms": 87.637
+            },
+            "per_update_median_ms": 0.8006,
+            "noop_roundtrip_total": {
+              "n": 5,
+              "median_ms": 36.9635,
+              "p95_ms": 39.8597,
+              "min_ms": 33.2487,
+              "max_ms": 39.8597
+            },
+            "per_noop_median_ms": 0.3696,
+            "final_flush_ms": 0.002,
+            "disk_bytes_before": 270690604,
+            "disk_bytes_after_updates": 270690697,
+            "disk_bytes_after_flush": 270690697,
+            "final_values": [
+              [
+                6.97,
+                5.0
+              ]
+            ],
+            "exceeds_threshold": true,
+            "correct": true
+          }
+        }
+      }
+    }
+  }
+}

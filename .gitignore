@@ -1,0 +1,6 @@
+data/oxigraph_rocksdb/
+.venv/
+__pycache__/
+.env
+results/.mara.lock
+results/.mara.pending
