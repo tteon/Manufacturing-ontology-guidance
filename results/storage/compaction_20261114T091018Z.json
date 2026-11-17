@@ -1,0 +1,270 @@
+{
+ "lines": 158,
+ "rounds": 200,
+ "batch": 500,
+ "engines": {
+  "PyOxigraph": [
+   {
+    "phase": "loaded",
+    "round": 0,
+    "bytes": 98970921,
+    "sst_files": 10,
+    "sst_bytes": 31265091,
+    "wal_bytes": 67499088,
+    "read_500_values_ms": 4.304,
+    "s3_global_count_ms": 65.307,
+    "scan_all_values_ms": 1.567,
+    "s3_correct": true
+   },
+   {
+    "phase": "after_updates",
+    "round": 25,
+    "bytes": 115821037,
+    "sst_files": 10,
+    "sst_bytes": 36123329,
+    "wal_bytes": 79490706,
+    "read_500_values_ms": 4.329,
+    "s3_global_count_ms": 76.55,
+    "scan_all_values_ms": 3.424,
+    "s3_correct": true,
+    "write_ms_median_recent": 9.081
+   },
+   {
+    "phase": "after_updates",
+    "round": 50,
+    "bytes": 127615040,
+    "sst_files": 10,
+    "sst_bytes": 35924928,
+    "wal_bytes": 91482635,
+    "read_500_values_ms": 4.432,
+    "s3_global_count_ms": 77.384,
+    "scan_all_values_ms": 4.981,
+    "s3_correct": true,
+    "write_ms_median_recent": 11.751
+   },
+   {
+    "phase": "after_updates",
+    "round": 75,
+    "bytes": 139778810,
+    "sst_files": 10,
+    "sst_bytes": 36096171,
+    "wal_bytes": 103474721,
+    "read_500_values_ms": 4.574,
+    "s3_global_count_ms": 81.481,
+    "scan_all_values_ms": 6.558,
+    "s3_correct": true,
+    "write_ms_median_recent": 13.628
+   },
+   {
+    "phase": "after_updates",
+    "round": 100,
+    "bytes": 146940186,
+    "sst_files": 9,
+    "sst_bytes": 31265042,
+    "wal_bytes": 115466762,
+    "read_500_values_ms": 4.737,
+    "s3_global_count_ms": 84.008,
+    "scan_all_values_ms": 8.456,
+    "s3_correct": true,
+    "write_ms_median_recent": 15.01
+   },
+   {
+    "phase": "after_updates",
+    "round": 125,
+    "bytes": 158932277,
+    "sst_files": 9,
+    "sst_bytes": 31265042,
+    "wal_bytes": 127458853,
+    "read_500_values_ms": 4.918,
+    "s3_global_count_ms": 87.282,
+    "scan_all_values_ms": 10.56,
+    "s3_correct": true,
+    "write_ms_median_recent": 16.192
+   },
+   {
+    "phase": "after_updates",
+    "round": 150,
+    "bytes": 170924045,
+    "sst_files": 9,
+    "sst_bytes": 31265042,
+    "wal_bytes": 139450621,
+    "read_500_values_ms": 5.026,
+    "s3_global_count_ms": 91.938,
+    "scan_all_values_ms": 13.792,
+    "s3_correct": true,
+    "write_ms_median_recent": 17.003
+   },
+   {
+    "phase": "after_updates",
+    "round": 175,
+    "bytes": 182915691,
+    "sst_files": 9,
+    "sst_bytes": 31265042,
+    "wal_bytes": 151442267,
+    "read_500_values_ms": 5.159,
+    "s3_global_count_ms": 97.095,
+    "scan_all_values_ms": 16.367,
+    "s3_correct": true,
+    "write_ms_median_recent": 18.169
+   },
+   {
+    "phase": "after_updates",
+    "round": 200,
+    "bytes": 194907950,
+    "sst_files": 9,
+    "sst_bytes": 31265042,
+    "wal_bytes": 163434526,
+    "read_500_values_ms": 5.592,
+    "s3_global_count_ms": 100.845,
+    "scan_all_values_ms": 20.54,
+    "s3_correct": true,
+    "write_ms_median_recent": 19.082
+   },
+   {
+    "phase": "after_flush",
+    "round": 200,
+    "bytes": 204295981,
+    "sst_files": 13,
+    "sst_bytes": 40650296,
+    "wal_bytes": 163434526,
+    "read_500_values_ms": 4.543,
+    "s3_global_count_ms": 76.889,
+    "scan_all_values_ms": 1.53,
+    "s3_correct": true,
+    "flush_ms": 286.5
+   },
+   {
+    "phase": "after_optimize",
+    "round": 200,
+    "bytes": 194911092,
+    "sst_files": 9,
+    "sst_bytes": 31264733,
+    "wal_bytes": 163434526,
+    "read_500_values_ms": 4.896,
+    "s3_global_count_ms": 77.055,
+    "scan_all_values_ms": 1.485,
+    "s3_correct": true,
+    "optimize_ms": 6.3
+   }
+  ],
+  "Neo4j": [
+   {
+    "phase": "loaded",
+    "round": 0,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 28.831,
+    "s3_global_count_ms": 17.802,
+    "scan_all_values_ms": 28.209,
+    "s3_correct": true
+   },
+   {
+    "phase": "after_updates",
+    "round": 25,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 13.257,
+    "s3_global_count_ms": 9.083,
+    "scan_all_values_ms": 10.959,
+    "s3_correct": true,
+    "write_ms_median_recent": 9.212
+   },
+   {
+    "phase": "after_updates",
+    "round": 50,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 12.138,
+    "s3_global_count_ms": 8.483,
+    "scan_all_values_ms": 5.15,
+    "s3_correct": true,
+    "write_ms_median_recent": 8.278
+   },
+   {
+    "phase": "after_updates",
+    "round": 75,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 11.167,
+    "s3_global_count_ms": 7.418,
+    "scan_all_values_ms": 7.29,
+    "s3_correct": true,
+    "write_ms_median_recent": 7.484
+   },
+   {
+    "phase": "after_updates",
+    "round": 100,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 10.153,
+    "s3_global_count_ms": 6.432,
+    "scan_all_values_ms": 4.589,
+    "s3_correct": true,
+    "write_ms_median_recent": 6.837
+   },
+   {
+    "phase": "after_updates",
+    "round": 125,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 9.735,
+    "s3_global_count_ms": 6.169,
+    "scan_all_values_ms": 4.634,
+    "s3_correct": true,
+    "write_ms_median_recent": 6.722
+   },
+   {
+    "phase": "after_updates",
+    "round": 150,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 10.515,
+    "s3_global_count_ms": 6.162,
+    "scan_all_values_ms": 4.883,
+    "s3_correct": true,
+    "write_ms_median_recent": 6.784
+   },
+   {
+    "phase": "after_updates",
+    "round": 175,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 10.518,
+    "s3_global_count_ms": 6.527,
+    "scan_all_values_ms": 4.785,
+    "s3_correct": true,
+    "write_ms_median_recent": 7.683
+   },
+   {
+    "phase": "after_updates",
+    "round": 200,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 10.156,
+    "s3_global_count_ms": 5.999,
+    "scan_all_values_ms": 4.629,
+    "s3_correct": true,
+    "write_ms_median_recent": 7.081
+   },
+   {
+    "phase": "after_checkpoint_attempt",
+    "round": 200,
+    "neo4j": 53140582,
+    "tx_log_bytes": 806680961,
+    "read_500_values_ms": 10.126,
+    "s3_global_count_ms": 5.903,
+    "scan_all_values_ms": 4.519,
+    "s3_correct": true,
+    "checkpoint": "unavailable (ClientError: Community edition)"
+   }
+  ]
+ },
+ "cmd": "compaction",
+ "args": {
+  "cmd": "compaction",
+  "lines": 158,
+  "rounds": 200,
+  "batch": 500,
+  "every": 25
+ }
+}

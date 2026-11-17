@@ -1,0 +1,525 @@
+[
+ {
+  "qid": "rdf32_0",
+  "kind": "S1",
+  "e2e_ms": 4124.0,
+  "llm_ms": 4120.8,
+  "tool_ms": 2.69,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "find_root_causes"
+  ]
+ },
+ {
+  "qid": "rdf32_1",
+  "kind": "S1",
+  "e2e_ms": 4118.6,
+  "llm_ms": 4109.3,
+  "tool_ms": 3.82,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "find_root_causes"
+  ]
+ },
+ {
+  "qid": "rdf32_2",
+  "kind": "S2",
+  "e2e_ms": 5301.8,
+  "llm_ms": 5297.4,
+  "tool_ms": 4.01,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "rdf32_3",
+  "kind": "S4",
+  "e2e_ms": 11877.4,
+  "llm_ms": 10078.3,
+  "tool_ms": 1767.77,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_4",
+  "kind": "S3",
+  "e2e_ms": 11803.5,
+  "llm_ms": 5452.8,
+  "tool_ms": 6350.14,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_5",
+  "kind": "S4",
+  "e2e_ms": 11840.0,
+  "llm_ms": 10087.9,
+  "tool_ms": 1736.56,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_6",
+  "kind": "S3",
+  "e2e_ms": 13659.4,
+  "llm_ms": 5278.2,
+  "tool_ms": 8380.72,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_7",
+  "kind": "S3",
+  "e2e_ms": 11792.8,
+  "llm_ms": 5587.2,
+  "tool_ms": 6205.04,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_8",
+  "kind": "S2",
+  "e2e_ms": 5321.1,
+  "llm_ms": 5316.6,
+  "tool_ms": 4.04,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "rdf32_9",
+  "kind": "S3",
+  "e2e_ms": 13528.5,
+  "llm_ms": 4925.1,
+  "tool_ms": 8602.95,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_10",
+  "kind": "S5",
+  "e2e_ms": 13530.2,
+  "llm_ms": 8739.7,
+  "tool_ms": 4789.82,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_11",
+  "kind": "S4",
+  "e2e_ms": 11902.3,
+  "llm_ms": 10331.2,
+  "tool_ms": 1510.14,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_12",
+  "kind": "S3",
+  "e2e_ms": 14326.3,
+  "llm_ms": 6358.4,
+  "tool_ms": 7967.4,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_13",
+  "kind": "S4",
+  "e2e_ms": 8880.4,
+  "llm_ms": 7414.9,
+  "tool_ms": 1454.36,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_14",
+  "kind": "S4",
+  "e2e_ms": 13224.0,
+  "llm_ms": 11776.7,
+  "tool_ms": 1439.62,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_15",
+  "kind": "S3",
+  "e2e_ms": 13518.0,
+  "llm_ms": 4879.2,
+  "tool_ms": 8638.21,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_16",
+  "kind": "S4",
+  "e2e_ms": 11887.5,
+  "llm_ms": 10105.5,
+  "tool_ms": 1737.97,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_17",
+  "kind": "S2",
+  "e2e_ms": 5548.8,
+  "llm_ms": 5544.7,
+  "tool_ms": 3.65,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "rdf32_18",
+  "kind": "S4",
+  "e2e_ms": 10286.6,
+  "llm_ms": 8940.6,
+  "tool_ms": 1336.34,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_19",
+  "kind": "S2",
+  "e2e_ms": 5320.9,
+  "llm_ms": 5316.1,
+  "tool_ms": 4.38,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "rdf32_20",
+  "kind": "S3",
+  "e2e_ms": 13524.8,
+  "llm_ms": 4787.4,
+  "tool_ms": 8736.94,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_21",
+  "kind": "S4",
+  "e2e_ms": 8628.9,
+  "llm_ms": 7341.3,
+  "tool_ms": 1270.3,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_22",
+  "kind": "S5",
+  "e2e_ms": 13651.7,
+  "llm_ms": 8724.1,
+  "tool_ms": 4926.71,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_23",
+  "kind": "S2",
+  "e2e_ms": 5318.5,
+  "llm_ms": 5315.2,
+  "tool_ms": 2.87,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "rdf32_24",
+  "kind": "S1",
+  "e2e_ms": 6876.4,
+  "llm_ms": 6872.2,
+  "tool_ms": 3.72,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "find_root_causes"
+  ]
+ },
+ {
+  "qid": "rdf32_25",
+  "kind": "S4",
+  "e2e_ms": 11858.2,
+  "llm_ms": 10219.2,
+  "tool_ms": 1617.16,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "rdf32_26",
+  "kind": "S2",
+  "e2e_ms": 6910.4,
+  "llm_ms": 6902.7,
+  "tool_ms": 7.28,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "rdf32_27",
+  "kind": "S1",
+  "e2e_ms": 6867.1,
+  "llm_ms": 6861.6,
+  "tool_ms": 5.13,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "find_root_causes"
+  ]
+ },
+ {
+  "qid": "rdf32_28",
+  "kind": "S3",
+  "e2e_ms": 12602.5,
+  "llm_ms": 4554.6,
+  "tool_ms": 8047.28,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_29",
+  "kind": "S3",
+  "e2e_ms": 12575.9,
+  "llm_ms": 4344.7,
+  "tool_ms": 8230.52,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_30",
+  "kind": "S3",
+  "e2e_ms": 14322.6,
+  "llm_ms": 6350.4,
+  "tool_ms": 7971.78,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "rdf32_31",
+  "kind": "S3",
+  "e2e_ms": 14331.1,
+  "llm_ms": 6358.0,
+  "tool_ms": 7972.68,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ }
+]

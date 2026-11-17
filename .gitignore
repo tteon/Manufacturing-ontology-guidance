@@ -6,3 +6,5 @@ results/.mara.lock
 results/.mara.pending
 loadtest/work/
 results/llm_state/
+plugins/
+data/oxigraph_rocksdb*/

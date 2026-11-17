@@ -1,0 +1,290 @@
+{
+ "lines": 158,
+ "stats": {
+  "scale_factor(lines)": 158,
+  "chambers": 632,
+  "equipment": 10270,
+  "lots": 1580,
+  "processedIn": 5362,
+  "observations": 7584,
+  "symptoms": 34,
+  "symptomatic_lots": 132,
+  "defective_seals": 264,
+  "causes": 272,
+  "quads_tbox": 49,
+  "quads_abox": 60609,
+  "quads_inferred": 39434,
+  "quads_total": 100092
+ },
+ "reclassified": 500,
+ "modes": {
+  "n10s LABELS": {
+   "import_tbox_ms": 115.747559,
+   "import_abox_ms": 2080.983838,
+   "import_info": {
+    "terminationStatus": "OK",
+    "triplesLoaded": 59997,
+    "triplesParsed": 59997,
+    "extraInfo": ""
+   },
+   "checkpoint": "unavailable (ClientError: Community edition)",
+   "nodes": 19850,
+   "rels": 32092,
+   "labels_total": 39672,
+   "store_bytes": {
+    "/data/databases/neo4j": 909312,
+    "/data/transactions/neo4j": 269484032
+   },
+   "causedBy_with_confidence": {
+    "n": 272,
+    "c": 272
+   },
+   "count_correct": true,
+   "count_ms": {
+    "Part": 19.648,
+    "Module": 11.925,
+    "Equipment": 18.492,
+    "GasSupplyModule": 8.689,
+    "MFC": 8.388
+   },
+   "s4_tbox_write_ms": 89.633124,
+   "s4_count_ms": 10.588379,
+   "s4_count_correct": true,
+   "reclassify_ms_samples": {
+    "forward": [
+     99.8,
+     16.7,
+     16.6,
+     16.1
+    ],
+    "back": [
+     54.8,
+     16.1,
+     16.2
+    ]
+   },
+   "reclassify_ms": 16.612,
+   "reclassify_writes": {
+    "labels_added": 500,
+    "labels_removed": 500,
+    "rels_deleted": 0,
+    "rels_created": 0
+   },
+   "after_reclass_counts_correct": true,
+   "class_delete_ms": 44.813549,
+   "class_delete_writes": {
+    "rels_deleted": 2
+   }
+  },
+  "n10s NODES": {
+   "import_tbox_ms": 34.599909,
+   "import_abox_ms": 1090.764897,
+   "import_info": {
+    "terminationStatus": "OK",
+    "triplesLoaded": 59997,
+    "triplesParsed": 59997,
+    "extraInfo": ""
+   },
+   "checkpoint": "unavailable (ClientError: Community edition)",
+   "nodes": 19854,
+   "rels": 51914,
+   "labels_total": 19854,
+   "store_bytes": {
+    "/data/databases/neo4j": 1647445,
+    "/data/transactions/neo4j": 269484032
+   },
+   "causedBy_with_confidence": {
+    "n": 272,
+    "c": 272
+   },
+   "count_correct": true,
+   "count_ms": {
+    "Part": 4.388,
+    "Module": 2.352,
+    "Equipment": 3.822,
+    "GasSupplyModule": 2.196,
+    "MFC": 1.704
+   },
+   "s4_tbox_write_ms": 35.629149,
+   "s4_count_ms": 2.515221,
+   "s4_count_correct": true,
+   "reclassify_ms_samples": {
+    "forward": [
+     451.9,
+     289.4,
+     261.4,
+     250.4
+    ],
+    "back": [
+     152.2,
+     113.8,
+     111.6
+    ]
+   },
+   "reclassify_ms": 275.357,
+   "reclassify_writes": {
+    "labels_added": 0,
+    "labels_removed": 0,
+    "rels_deleted": 500,
+    "rels_created": 500
+   },
+   "mfc_class_node_degree": 1264,
+   "after_reclass_counts_correct": true,
+   "class_delete_ms": 17.790204,
+   "class_delete_writes": {
+    "rels_deleted": 2
+   }
+  },
+  "n10s LABELS+mat": {
+   "import_tbox_ms": 26.13969,
+   "import_abox_ms": 787.405412,
+   "import_info": {
+    "terminationStatus": "OK",
+    "triplesLoaded": 59997,
+    "triplesParsed": 59997,
+    "extraInfo": ""
+   },
+   "materialize_superclass_labels_ms": 215.77,
+   "checkpoint": "unavailable (ClientError: Community edition)",
+   "nodes": 19850,
+   "rels": 32092,
+   "labels_total": 68836,
+   "store_bytes": {
+    "/data/databases/neo4j": 2572731,
+    "/data/transactions/neo4j": 269484032
+   },
+   "causedBy_with_confidence": {
+    "n": 272,
+    "c": 272
+   },
+   "count_correct": true,
+   "count_ms": {
+    "Part": 1.632,
+    "Module": 2.094,
+    "Equipment": 1.387,
+    "GasSupplyModule": 1.709,
+    "MFC": 1.389
+   },
+   "s4_tbox_write_ms": 25.083909,
+   "s4_label_migration_ms": 45.785423,
+   "s4_labels_added": 1264,
+   "s4_count_ms": 10.948934,
+   "s4_count_correct": true,
+   "reclassify_ms_samples": {
+    "forward": [
+     28.8,
+     10.2,
+     7.1,
+     7.4
+    ],
+    "back": [
+     27.1,
+     7.6,
+     7.1
+    ]
+   },
+   "reclassify_ms": 8.774,
+   "reclassify_writes": {
+    "labels_added": 500,
+    "labels_removed": 0,
+    "rels_deleted": 0,
+    "rels_created": 0
+   },
+   "after_reclass_counts_correct": true,
+   "class_delete_ms": 35.225907,
+   "class_delete_writes": {
+    "labels_removed": 1264,
+    "rels_deleted": 2
+   }
+  },
+  "PyOxigraph query_time": {
+   "import_ms": 833.701307,
+   "count_correct": true,
+   "count_ms": {
+    "Part": 2.49,
+    "Module": 0.684,
+    "Equipment": 3.234,
+    "GasSupplyModule": 0.266,
+    "MFC": 0.452
+   },
+   "s4_tbox_write_ms": 0.037835,
+   "s4_migration_ms": 0.0,
+   "s4_flush_ms": 21.299429,
+   "s4_facts_written": 0,
+   "s4_count_correct": true,
+   "reclassify_quad_delta": 0,
+   "reclassify_ms_samples": {
+    "forward": [
+     7.5,
+     10.3,
+     8.4,
+     8.1
+    ],
+    "back": [
+     8.4,
+     7.8,
+     7.7
+    ]
+   },
+   "reclassify_ms": 8.242,
+   "reclassify_flush_ms": 27.642,
+   "after_reclass_counts_correct": true,
+   "class_delete_ms": 19.114633,
+   "class_delete_quad_delta": -3,
+   "store": {
+    "bytes": 32393191,
+    "sst_files": 16,
+    "sst_bytes": 31604585,
+    "wal_bytes": 554662
+   }
+  },
+  "PyOxigraph materialized": {
+   "import_ms": 802.723923,
+   "count_correct": true,
+   "count_ms": {
+    "Part": 1.951,
+    "Module": 0.529,
+    "Equipment": 2.526,
+    "GasSupplyModule": 0.217,
+    "MFC": 0.37
+   },
+   "s4_tbox_write_ms": 0.03634,
+   "s4_migration_ms": 8.136672,
+   "s4_flush_ms": 29.170579,
+   "s4_facts_written": 1264,
+   "s4_count_correct": true,
+   "reclassify_quad_delta": 500,
+   "reclassify_ms_samples": {
+    "forward": [
+     15.9,
+     20.2,
+     17.6,
+     18.1
+    ],
+    "back": [
+     18.6,
+     17.2,
+     17.6
+    ]
+   },
+   "reclassify_ms": 17.842,
+   "reclassify_flush_ms": 30.717,
+   "after_reclass_counts_correct": true,
+   "class_delete_ms": 25.500431,
+   "class_delete_quad_delta": -1267,
+   "store": {
+    "bytes": 34227338,
+    "sst_files": 16,
+    "sst_bytes": 32560292,
+    "wal_bytes": 1433085
+   }
+  }
+ },
+ "n10s_jar": "neosemantics-5.26.0.jar",
+ "cmd": "n10s",
+ "args": {
+  "cmd": "n10s",
+  "lines": 158,
+  "reclass": 500
+ }
+}

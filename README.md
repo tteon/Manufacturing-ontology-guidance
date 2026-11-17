@@ -5,7 +5,9 @@ measures the trade-offs with ground truth attached:
 
 * **PyOxigraph 0.5**: RDF 1.2 / SPARQL 1.2 on an on-disk RocksDB store, embedded in Python. For the load test,
   Oxigraph's own HTTP SPARQL server is used instead.
-* **Neo4j 5.26 Community**: a labeled property graph queried with Cypher over Bolt.
+* **Neo4j 5.26 Community**: a labeled property graph queried with Cypher over Bolt. The benchmarks load it with a
+  small custom RDF→LPG loader (`src/loader.py`). The storage study also loads it through **neosemantics (n10s)**
+  with `handleRDFTypes=LABELS` and `NODES`.
 
 What is included:
 * A **connected fab-graph generator** that plants facts and computes every answer in plain Python, so
@@ -18,6 +20,8 @@ What is included:
 Further reading:
 * **[docs/WORKFLOW.md](docs/WORKFLOW.md)**: each scenario end to end with real data (user request → raw tool call
   → filled SPARQL/Cypher → result → generated answer → grade).
+* **[docs/STORAGE.md](docs/STORAGE.md)**: how each engine persists TBox/ABox CRUD (LSM tombstones vs record store),
+  n10s `LABELS` vs `NODES`, an append-only sensor time series (S6), and compaction.
 * **[docs/ONTOLOGY_AND_CQ.md](docs/ONTOLOGY_AND_CQ.md)**: how MASON, SOSA/SSN and FMEA were combined and why,
   the weak spots, and how the competency questions were created.
 
@@ -51,8 +55,21 @@ cp .env.example .env                                 # set MARA_API_KEY
 uv run python src/tool_agent.py                      # --lines 16 --backends rdf,lpg
 uv run python src/render_workflow.py                 # regenerate docs/WORKFLOW.md from the latest agent run
 
+# Storage CRUD study (docs/STORAGE.md). s6/compaction use the compose Neo4j; n10s starts its own container
+mkdir -p plugins && curl -L -o plugins/neosemantics-5.26.0.jar \
+  https://github.com/neo4j-labs/neosemantics/releases/download/5.26.0/neosemantics-5.26.0.jar
+uv run python src/exp_storage.py n10s          # --lines 158 --reclass 500
+uv run python src/exp_storage.py s6            # --lines 16 --rounds 200 --every 25
+uv run python src/exp_storage.py compaction    # --lines 158 --rounds 200 --batch 500
+
 docker compose down -v
 ```
+
+> **LLM endpoint status (checked 2026-11-18):** `https://api.cloud.mara.com/v1` now redirects `GET /v1/models`
+> to `www.mara.com` (HTTP 301) and rejects `POST /v1/chat/completions` with HTTP 405, even though the public docs
+> still list it. The recorded LLM results in `results/` were produced on 2026-11-14, when the endpoint answered
+> normally. The gateway works with any OpenAI-compatible endpoint that supports `tools`: set `MARA_BASE_URL` and
+> `MARA_API_KEY`, and pass `--model`. Results with another model are not comparable to the recorded ones.
 
 If Neo4j is unreachable, `benchmark_runner.py` runs PyOxigraph alone. Output goes to `results/v2/run_<UTC>.json`
 and to a Markdown table, `results/v2/summary_<UTC>.md`. The load test has its own section [below](#concurrency--throughput-load-test).
@@ -253,38 +270,73 @@ uv run python loadtest/llm_load.py --lines 1580 --conc 1,2,4,8,16,32 --per-level
 **Before any load**, all 200 pooled requests per read scenario were correct on both servers. Serial means:
 S1 1.7 / 3.3 ms, S2 1.1 / 3.4 ms, **S3 1,433 / 75 ms**, class counts about 8–14 ms (Oxigraph / Neo4j).
 
-**Preliminary finding (closed phase, trial 1; the full run is still in progress): SPARQL Update read-modify-write is
-not serializable under concurrent HTTP clients.** Each upsert is a single `DELETE {old} INSERT {new} WHERE {OPTIONAL
-old}` request. When requests run concurrently, two transactions can read the same old value, both delete it and both
-insert their own new value. The observation then keeps several values (write skew):
+Full per-cell tables: [`results/loadtest/L1580_main/REPORT.md`](results/loadtest/L1580_main/REPORT.md).
+Closed loop: 3 trials for trials 1–2 and part of trial 3 (137 of 168 cells; the third trial was cut by a time
+limit). Open loop: 72/72 cells (3 trials).
 
-| Oxigraph mix | Concurrency where duplicates appeared (trial 1) |
+**Finding 1: SPARQL Update read-modify-write is not serializable under concurrent HTTP clients (Oxigraph).**
+Each upsert is a single `DELETE {old} INSERT {new} WHERE {OPTIONAL old}` request. Concurrent transactions read the
+same old value, all delete it and all insert their own value, so the observation keeps several values (write skew):
+
+| Oxigraph mix | Duplicates observed |
 |---|---|
-| `Whot` (all writes to one observation) | every level ≥ 2; the observation held roughly **c values** at concurrency *c* (2 / 3 / 8 / 16 / 32 / 61 values at c = 2 / 4 / 8 / 16 / 32 / 64) |
-| `W` (writes spread across ~95k observations) | ≥ 8 |
-| `M` (10% writes) | none observed |
+| `Whot` (all writes to one observation) | at every concurrency ≥ 2; the observation held roughly **c values** at concurrency *c* (2 / 4 / 8 / 16 / 32 / 62 values at c = 2 / 4 / 8 / 16 / 32 / 64) |
+| `W` (writes spread across ~95k observations) | 1–2 observations per cell at concurrency ≥ 8 |
+| `M` (10% writes) | none |
 
-In other words, almost every concurrent writer's INSERT survived. Neo4j's property `SET` takes a node lock and
-cannot hold two values. That makes this check one-sided, but it is still a real
-difference for designing an RDF write path: use one writer per key, a serializing queue, or model readings as
-append-only observations instead of overwriting them in place.
+Neo4j's property `SET` takes a node lock and cannot hold two values. That makes this check one-sided, but it is
+still a real constraint on an RDF write path: serialize writers per key, or model readings as append-only
+observations ([docs/STORAGE.md](docs/STORAGE.md)).
 
-Other preliminary observations:
-* At 1M quads, Oxigraph's S3 (about 1.4 s per query) dominates its read mix, giving 2–16 requests/s with p99
-  1.5–15.7 s. Neo4j serves the same mixes at about 230–265 requests/s with p99 0.07–1.6 s, saturating at about
-  4 clients.
-* **Oxigraph `R` at concurrency 64 produced no valid samples.** Single-request latency exceeded the 15 s window.
-  The closed loop attributes requests to the window by *start* time, so a cell whose latency is longer than the
-  window is invalid, not "0 requests/s".
+**Finding 2: hot-key overwrites are slow on Oxigraph even without concurrency.** At concurrency 1, overwriting one
+observation repeatedly (`Whot`) had a p50 of 12.5 ms, against 0.77 ms when writes were spread out (`W`). This is
+consistent with the tombstone build-up measured in [docs/STORAGE.md §4](docs/STORAGE.md).
+
+**Finding 3: reads at 1M quads.**
+* Neo4j saturates at about 4 clients, at roughly 240–265 requests/s (R and M mixes, 8 server threads). In the open
+  loop, p99 is 0.09–0.22 s up to 75% of peak load and 1.3–1.7 s at 100%. At 110% of peak there were
+  58 `TransientError`s.
+* Oxigraph's per-line S3 (about 1.4 s serial, 3.9 s at concurrency 8) dominates its read mix, giving 2–14
+  requests/s with multi-second p99. At concurrency 64, single-request latency exceeded the 15 s window, so those
+  cells are **invalid**, not "0 requests/s".
+* Per operation, Oxigraph is fast on S1/S2 (p50 2.5 / 1.5 ms at concurrency 8). The difference is concentrated in
+  S3 and the class counts.
+
+**Caveats for the server load test:**
+* Every Oxigraph `W` cell is client-bound (about 8 client cores against about 1.4 server cores). Do **not** compare
+  write throughput between the engines from this harness.
 * Oxigraph closed-loop read cells contain few samples (about 30 at concurrency 1), so their p99 is close to the maximum.
-* Every Oxigraph `W` cell is **client-bound** (about 8 client cores against about 1.4 server cores). Do **not**
-  compare write throughput between the engines from this harness.
-* The SPARQL protocol re-sends and re-parses the full query text on every request, while Bolt uses parameterized,
-  plan-cached queries. This cost asymmetry belongs to the protocols, not to the data models.
-* Both servers run **at the same time** on the same CPU set. The idle one can still do background work (checkpoints,
-  compaction) during the other's cells.
+* The SPARQL protocol re-sends and re-parses the full query text on every request, while Bolt sends parameterized,
+  plan-cached queries.
+* Both servers ran at the same time on the same CPU set.
+* Errors and dropped requests are excluded from the latency percentiles; they are reported separately.
 
-Final closed/open tables and the LLM concurrency results will be added under `results/loadtest/` when the run finishes.
+### LLM end-to-end concurrency (`loadtest/llm_load.py`, `results/loadtest/llm_L1580_20261114T090154Z/`)
+
+N concurrent tool-calling agents (`gpt-oss-120b`, MARA) answered questions generated from the 1M-quad graph
+against the two servers, with 32 questions per level and one trial. In total there were 384 questions and 933 API
+calls: 929 returned HTTP 200, and 4 got HTTP 429 and succeeded on retry.
+
+| Backend | Concurrent agents | Questions | Throughput q/min | e2e p50 ms | e2e p90 ms | e2e p99 ms | LLM share of time | Tool p50 ms | Errors | Correct tools / full P-R |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| lpg | 1 | 32 | 20.7 | 2,479 | 4,627 | 5,322 | 96% | 75 | 0 | 32 / 32 |
+| lpg | 2 | 32 | 37.23 | 2,498 | 5,029 | 6,771 | 95% | 81 | 0 | 32 / 32 |
+| lpg | 4 | 32 | 78.26 | 2,813 | 3,382 | 6,288 | 96% | 78 | 0 | 32 / 32 |
+| lpg | 8 | 32 | 122.81 | 3,358 | 5,115 | 6,814 | 98% | 5 | 0 | 32 / 32 |
+| lpg | 16 | 32 | 100.36 | 6,743 | 9,651 | 10,647 | 94% | 207 | 0 | 32 / 32 |
+| lpg | 32 | 32 | 160.75 | 6,819 | 9,851 | 11,935 | 94% | 52 | 0 | 32 / 32 |
+| rdf | 1 | 32 | 13.55 | 4,928 | 6,216 | 7,460 | 70% | 501 | 0 | 32 / 32 |
+| rdf | 2 | 32 | 28.85 | 4,881 | 5,711 | 6,418 | 71% | 533 | 0 | 32 / 32 |
+| rdf | 4 | 32 | 46.34 | 5,632 | 5,998 | 7,107 | 54% | 3,655 | 0 | 32 / 32 |
+| rdf | 8 | 32 | 83.2 | 5,501 | 7,864 | 8,721 | 76% | 513 | 0 | 32 / 32 |
+| rdf | 16 | 32 | 120.05 | 6,457 | 8,845 | 9,143 | 77% | 932 | 0 | 32 / 32 |
+| rdf | 32 | 32 | 133.89 | 11,858 | 13,659 | 14,331 | 66% | 1,737 | 0 | 32 / 32 |
+
+* **All 384 questions had 0 errors, the expected tools, and 100% P/R on the tool results**, at every concurrency
+  level on both backends.
+* On LPG, LLM time is 94–98% of end-to-end time, so throughput scales with agent concurrency to about 161 q/min at 32.
+* On RDF, Oxigraph's S3 tool calls (seconds at 1M quads) take 23–46% of the time. Under 32 agents its p50 rises to
+  11.9 s, because tool calls queue on the server.
 
 ## Guidance: what this repo does and does not tell you
 
@@ -292,7 +344,9 @@ Final closed/open tables and the LLM concurrency results will be added under `re
 |---|---|---|
 | Statement-level metadata (confidence or provenance on an edge) | Both work. RDF 1.2 annotations (`<< s p o >> ex:confidence`) and LPG relationship properties both returned identical results | High (correctness), low (performance) |
 | Hierarchy / transitive reasoning without a reasoner | Both are expressive enough (`subClassOf*` / `partOf+` vs variable-length patterns). **Performance depends on query formulation and the optimizer.** Oxigraph showed 100× swings between equivalent SPARQL versions and linear S3 growth | Medium |
-| Runtime schema (TBox) evolution | Query-time inference needs zero ABox migration on both engines. Write-time materialization costs about 8 ms per 1.3k facts on both. Choose by read pattern, not by engine | Medium |
+| Runtime schema (TBox) evolution | Query-time inference needs zero ABox migration on both engines. Write-time materialization (superclass labels / inferred triples) costs about 8 ms (Oxigraph) and about 46 ms (n10s labels) per 1.3k affected instances, and the same again on class deletion. Choose by read pattern, not by engine | Medium |
+| Type changes in an LPG (n10s) | Relabeling is cheap (9–17 ms per 500 nodes). **Storing `rdf:type` as relationships (`handleRDFTypes=NODES`) makes class nodes dense hubs, and reclassification was 17–31× slower** ([docs/STORAGE.md §2](docs/STORAGE.md)) | Medium |
+| Real-time sensor streams | Append-only observations are cheap and flat on both engines (about 35–47 ms per 768 readings). Without a latest pointer, current-state queries grow with history (Oxigraph per-line query 25 ms → 2.8 s at 154k readings); **a latest pointer keeps them flat** at about 2.4× the append cost. On RDF, in-place overwrites accumulate tombstones (13× slower scans after 100k updates until flush/compaction) ([docs/STORAGE.md §3–4](docs/STORAGE.md)) | Medium–High |
 | High-frequency updates of the same value | **Do not use concurrent SPARQL `DELETE/INSERT` read-modify-write on Oxigraph without serializing writers** (write skew observed). Neo4j's property `SET` is safe here. In RDF, prefer append-only observations | High (anomaly reproducible), low (throughput numbers) |
 | Durability | PyOxigraph commits are not fsynced (flush is a separate ~25 ms). Neo4j fsyncs each commit. Compare only like-for-like durability | High |
 | LLM integration | Template tool calling (no text2query) was 100% correct here with an identical tool interface on both backends. **The backend choice is invisible to the LLM.** LLM latency (seconds) dwarfs query latency (milliseconds) | Medium (n=1 per cell) |
@@ -323,7 +377,7 @@ This repo does **not** tell you:
 ```
 ├── data/mfg_knowledge.trig    Core TBox (TriG, ex:TBox_Graph)
 ├── docker-compose.yml         Neo4j 5.26 Community for the embedded benchmark (loopback ports, named volume)
-├── docs/                      WORKFLOW.md (end-to-end walkthrough), ONTOLOGY_AND_CQ.md (alignment and CQs)
+├── docs/                      WORKFLOW.md, STORAGE.md, ONTOLOGY_AND_CQ.md
 ├── src/
 │   ├── common.py              TBox loader, connected generator, ground truth, precision/recall, timing
 │   ├── queries.py             All SPARQL and Cypher templates and result canonicalization
@@ -334,7 +388,8 @@ This repo does **not** tell you:
 │   ├── tool_agent.py          Template tool-calling agent (MARA function calling)
 │   ├── llm_agent.py           MARA gateway (file lock, pending guard, budget, redacted receipts)
 │   ├── render_workflow.py     Builds docs/WORKFLOW.md from a tool-agent run
+│   ├── exp_storage.py         Storage CRUD study: n10s LABELS/NODES, S6 time series, compaction
 │   └── fsync_probe.py         strace helper for commit durability
-├── loadtest/                  setup.py, servers.py, ops.py, driver.py, run_matrix.py, llm_load.py
-└── results/                   v1/ (archived), v2/, loadtest/, tool-agent runs and receipts
+├── loadtest/                  setup.py, servers.py, ops.py, driver.py, run_matrix.py, report.py, llm_load.py
+└── results/                   v1/ (archived), v2/, loadtest/, storage/, tool-agent runs and receipts
 ```

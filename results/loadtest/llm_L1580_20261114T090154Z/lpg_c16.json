@@ -1,0 +1,537 @@
+[
+ {
+  "qid": "lpg16_0",
+  "kind": "S5",
+  "e2e_ms": 7363.1,
+  "llm_ms": 7098.9,
+  "tool_ms": 263.36,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_1",
+  "kind": "S4",
+  "e2e_ms": 7275.2,
+  "llm_ms": 6305.2,
+  "tool_ms": 883.52,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_2",
+  "kind": "S4",
+  "e2e_ms": 9651.0,
+  "llm_ms": 8384.5,
+  "tool_ms": 1255.59,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_3",
+  "kind": "S3",
+  "e2e_ms": 7016.6,
+  "llm_ms": 6779.9,
+  "tool_ms": 235.9,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_4",
+  "kind": "S3",
+  "e2e_ms": 7009.9,
+  "llm_ms": 6801.7,
+  "tool_ms": 207.3,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_5",
+  "kind": "S5",
+  "e2e_ms": 5428.6,
+  "llm_ms": 5116.7,
+  "tool_ms": 311.15,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_6",
+  "kind": "S5",
+  "e2e_ms": 6310.6,
+  "llm_ms": 6104.0,
+  "tool_ms": 205.74,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_7",
+  "kind": "S5",
+  "e2e_ms": 6310.0,
+  "llm_ms": 6160.2,
+  "tool_ms": 149.05,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_8",
+  "kind": "S4",
+  "e2e_ms": 9636.3,
+  "llm_ms": 8263.9,
+  "tool_ms": 1355.95,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_9",
+  "kind": "S5",
+  "e2e_ms": 6742.7,
+  "llm_ms": 6583.0,
+  "tool_ms": 158.84,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_10",
+  "kind": "S4",
+  "e2e_ms": 9659.7,
+  "llm_ms": 8330.8,
+  "tool_ms": 1306.66,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_11",
+  "kind": "S4",
+  "e2e_ms": 10641.1,
+  "llm_ms": 9969.3,
+  "tool_ms": 653.21,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_12",
+  "kind": "S4",
+  "e2e_ms": 9627.2,
+  "llm_ms": 8337.4,
+  "tool_ms": 1276.8,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_13",
+  "kind": "S4",
+  "e2e_ms": 10646.7,
+  "llm_ms": 9962.7,
+  "tool_ms": 666.59,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_14",
+  "kind": "S5",
+  "e2e_ms": 5621.8,
+  "llm_ms": 5319.7,
+  "tool_ms": 301.2,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_15",
+  "kind": "S2",
+  "e2e_ms": 5168.3,
+  "llm_ms": 5121.6,
+  "tool_ms": 45.83,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "lpg16_16",
+  "kind": "S5",
+  "e2e_ms": 7225.8,
+  "llm_ms": 7035.9,
+  "tool_ms": 188.68,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_17",
+  "kind": "S1",
+  "e2e_ms": 5159.5,
+  "llm_ms": 5111.6,
+  "tool_ms": 46.98,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "find_root_causes"
+  ]
+ },
+ {
+  "qid": "lpg16_18",
+  "kind": "S5",
+  "e2e_ms": 4892.2,
+  "llm_ms": 4811.9,
+  "tool_ms": 78.77,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_19",
+  "kind": "S2",
+  "e2e_ms": 4263.6,
+  "llm_ms": 4216.0,
+  "tool_ms": 46.76,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "lpg16_20",
+  "kind": "S4",
+  "e2e_ms": 9425.0,
+  "llm_ms": 8959.8,
+  "tool_ms": 374.61,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_21",
+  "kind": "S3",
+  "e2e_ms": 5910.6,
+  "llm_ms": 5807.0,
+  "tool_ms": 102.89,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_22",
+  "kind": "S5",
+  "e2e_ms": 5412.2,
+  "llm_ms": 5325.8,
+  "tool_ms": 85.02,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_23",
+  "kind": "S3",
+  "e2e_ms": 3573.1,
+  "llm_ms": 3493.5,
+  "tool_ms": 78.62,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "classify_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_24",
+  "kind": "S1",
+  "e2e_ms": 3583.7,
+  "llm_ms": 3582.0,
+  "tool_ms": 1.06,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "find_root_causes"
+  ]
+ },
+ {
+  "qid": "lpg16_25",
+  "kind": "S5",
+  "e2e_ms": 5046.9,
+  "llm_ms": 4965.1,
+  "tool_ms": 80.56,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_26",
+  "kind": "S4",
+  "e2e_ms": 8644.9,
+  "llm_ms": 7619.7,
+  "tool_ms": 1009.52,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_27",
+  "kind": "S4",
+  "e2e_ms": 9478.3,
+  "llm_ms": 8519.4,
+  "tool_ms": 936.08,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ },
+ {
+  "qid": "lpg16_28",
+  "kind": "S5",
+  "e2e_ms": 6403.2,
+  "llm_ms": 6243.4,
+  "tool_ms": 158.6,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_29",
+  "kind": "S5",
+  "e2e_ms": 4425.0,
+  "llm_ms": 4345.3,
+  "tool_ms": 78.53,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "batch_stream_update",
+   "count_sensor_anomalies"
+  ]
+ },
+ {
+  "qid": "lpg16_30",
+  "kind": "S2",
+  "e2e_ms": 3036.5,
+  "llm_ms": 3030.1,
+  "tool_ms": 4.7,
+  "turns": 2,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "trace_contamination"
+  ]
+ },
+ {
+  "qid": "lpg16_31",
+  "kind": "S4",
+  "e2e_ms": 8535.9,
+  "llm_ms": 7489.7,
+  "tool_ms": 1027.18,
+  "turns": 3,
+  "error": null,
+  "answered": true,
+  "tools_ok": true,
+  "precision": 1.0,
+  "recall": 1.0,
+  "tools": [
+   "add_superclass",
+   "list_equipment_by_class"
+  ]
+ }
+]
